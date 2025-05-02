@@ -1,6 +1,6 @@
 package shapes;
 
-public class Rectangle {
+public class Rectangle extends  Shape {
 	
 
 	double width;

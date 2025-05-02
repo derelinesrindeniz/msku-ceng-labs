@@ -1,33 +1,38 @@
 package drawing.version2;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import shapes.Circle;
 import shapes.Rectangle;
+import shapes.Square;
 
 public class Drawing {
-	
-	private ArrayList<Circle> circles = new ArrayList<Circle>();
-	private ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
-	
-	public double calculateTotalArea(){
-		double totalArea = 0;
 
-		for (Circle circle : circles){
-			totalArea += circle.area();    
-		}
-		
-		for (Rectangle rect : rectangles){            
-			totalArea += rect.area();     
-		}		
-		return totalArea;
-	}
-	
-	public void addCircle(Circle c) {
-		circles.add(c);
-	}
-	
-	public void addRectangle(Rectangle r) {
-		rectangles.add(r);
-	}
+    private ArrayList<Object> shapes = new ArrayList<Object>();
+
+
+    public double calculateTotalArea() {
+        double totalArea = 0;
+
+        for (Object shape : shapes) {
+            if (shape instanceof Circle) {
+                Circle c = (Circle) shape;
+                totalArea += c.area();
+            } else if (shape instanceof Rectangle) {
+                Rectangle r = (Rectangle) shape;
+                totalArea += r.area();
+            } else if (shape instanceof Square) {
+                Square s = (Square) shape;
+                totalArea += s.area();
+            }
+        }
+        return totalArea;
+    }
+
+    public void addShape(Object shape) {
+        shapes.add(shape);
+    }
+
+
 }
