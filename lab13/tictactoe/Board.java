@@ -15,7 +15,18 @@ public class Board {
 		return currentPlayer;
 	}
 
-	public void move(int row, int col) {
+	public void move(int row, int col) throws InvalidMoveException {
+		if(row<1 || row>3 ){
+			throw new InvalidMoveException("row number should be between 1 and 3 ");
+		}
+		if (col<1 || col>3){
+			throw new InvalidMoveException("column number should be between 1 and 3 ");
+		}
+		if(board[row-1][col-1] != ' '){
+			throw new InvalidMoveException("location is already occupied ");
+
+		}
+
 		board[row - 1][col - 1] = currentPlayer == 1 ? 'X' : 'O';
 		currentPlayer = 3 - currentPlayer;
 		moveCount++;

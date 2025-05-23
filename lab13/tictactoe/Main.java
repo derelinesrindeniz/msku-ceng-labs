@@ -1,6 +1,5 @@
 package tictactoe;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -14,21 +13,41 @@ public class Main {
         while (!board.isEnded()) {
 
             int player = board.getCurrentPlayer();
+            int row = 0, col = 0;
+            boolean invalidRow = false;
+            do {
+                System.out.print("Player " + player + " enter row number:");
+                try {
+                    row = Integer.valueOf(reader.nextLine());
+                    invalidRow = false;
 
-            System.out.print("Player " + player + " enter row number:");
-            int row = Integer.valueOf(reader.nextLine());
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Invalid row number");
+                    invalidRow = true;
+                }
+            } while (invalidRow);
+            boolean invalidColumn = false;
+            do {
+                System.out.print("Player " + player + " enter column number:");
+                try {
+                    col = Integer.valueOf(reader.nextLine());
+                    invalidColumn = false;
 
-
-            System.out.print("Player " + player + " enter column number:");
-            int col = Integer.valueOf(reader.nextLine());
-
-            board.move(row, col);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Invalid column number");
+                    invalidColumn = true;
+                }
+            } while (invalidColumn);
+            try {
+                board.move(row, col);
+            } catch (InvalidMoveException ime) {
+                System.out.println(ime.getMessage());
+            }
             System.out.println(board);
         }
 
 
         reader.close();
     }
-
-
 }
+
