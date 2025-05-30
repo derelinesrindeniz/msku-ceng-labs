@@ -1,22 +1,28 @@
 package generics.stack;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class StackArrayImpl implements Stack {
-    private ArrayList<Object> stack = new ArrayList<Object>();
+public class StackArrayImpl<T> implements Stack<T> {
+    private ArrayList<T> stack = new ArrayList<T>();
 
     @Override
-    public void push(Object item) {
+    public void push(T item) {
         stack.add(0, item);
     }
 
     @Override
-    public Object pop() {
+    public T pop() {
         return stack.remove(0);
     }
 
     @Override
     public boolean empty() {
         return stack.size() == 0;
+    }
+    
+    @Override
+    public List<T> toList(){
+        return stack;
     }
 }

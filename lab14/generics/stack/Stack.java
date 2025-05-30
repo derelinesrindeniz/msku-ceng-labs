@@ -1,10 +1,14 @@
 package generics.stack;
 
-public interface Stack {
+import java.util.List;
 
-    void push(Object item);
+public interface Stack<T> {
 
-    Object pop ();
+    void push(T item);
+
+    T pop ();
 
     boolean empty();
+
+    List<T> toList();
 }

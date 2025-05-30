@@ -1,28 +1,28 @@
 package generics.stack;
 
-public class StackItem {
+public class StackItem<T> {
 
-    Object item;
+    private T item;
 
-    StackItem next;
+    StackItem<T> next;
 
-    public StackItem(Object item) {
+    public StackItem(T item) {
         this.item = item;
     }
 
-    public Object getItem() {
+    public T getItem() {
         return item;
     }
 
-    public void setItem(Object item) {
+    public void setItem(T item) {
         this.item = item;
     }
 
-    public StackItem getNext() {
+    public StackItem<T> getNext() {
         return next;
     }
 
-    public void setNext(StackItem next) {
+    public void setNext(StackItem<T> next) {
         this.next = next;
     }
 }
