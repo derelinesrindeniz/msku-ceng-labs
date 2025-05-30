@@ -1,4 +1,4 @@
-package stack;
+package generics.stack;
 
 public class StackItem {
 
